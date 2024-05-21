@@ -13,4 +13,10 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.terciaryColor};
     color: ${(props) => props.theme.primaryColor};
   }
+
+  .container {
+    margin: auto 0;
+    max-width: 1024px;
+    width: 100%;
+  }
 `
