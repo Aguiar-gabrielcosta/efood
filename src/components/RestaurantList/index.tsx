@@ -1,3 +1,4 @@
+import RestaurantCard from '../RestaurantCard'
 import { RestaurantSection, Restaurants } from './styles'
 
 const RestaurantList = () => {
@@ -5,7 +6,16 @@ const RestaurantList = () => {
     <RestaurantSection>
       <div className="container">
         <Restaurants>
-          <li>Restaurante1</li>
+          <li>
+            <RestaurantCard
+              name="Nome Teste"
+              image="//placehold.it/472x217"
+              description="Teste teste teste teste test"
+              rating={4.9}
+              link="/"
+              tags={['Tag1', 'Tag2']}
+            />
+          </li>
           <li>Restaurante2</li>
           <li>Restaurante3</li>
           <li>Restaurante4</li>
