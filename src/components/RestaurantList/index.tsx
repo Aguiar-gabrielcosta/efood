@@ -19,7 +19,7 @@ const RestaurantList = ({ restaurants }: Props) => {
                   image={restaurant.image}
                   description={restaurant.description}
                   rating={restaurant.rating}
-                  perfilLink={restaurant.link}
+                  perfilLink={restaurant.route}
                   tags={restaurant.tags}
                 />
               </li>

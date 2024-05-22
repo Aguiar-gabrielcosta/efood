@@ -1,12 +1,16 @@
 import Header from '../../components/Header'
 import RestaurantList from '../../components/RestaurantList'
-import { restaurantsData } from '../../data/restaurants'
+import Restaurant from '../../models/restaurant'
 
-const Home = () => {
+type Props = {
+  data: Restaurant[]
+}
+
+const Home = ({ data }: Props) => {
   return (
     <>
       <Header showCart={false} showNavLink={false} showTitle={true} />
-      <RestaurantList restaurants={restaurantsData} />
+      <RestaurantList restaurants={data} />
     </>
   )
 }

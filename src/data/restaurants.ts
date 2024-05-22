@@ -10,7 +10,7 @@ export const restaurantsData: Restaurant[] = [
     ['Destaque da semana', 'Japonesa'],
     4.9,
     'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    '/restaurant1'
+    '/perfil1'
   ),
   new Restaurant(
     2,
@@ -19,7 +19,7 @@ export const restaurantsData: Restaurant[] = [
     ['Italiana'],
     4.6,
     'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    '/restaurant2'
+    '/perfil2'
   ),
   new Restaurant(
     3,
@@ -28,7 +28,7 @@ export const restaurantsData: Restaurant[] = [
     ['Italiana'],
     4.6,
     'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    '/restaurant2'
+    '/perfil3'
   ),
   new Restaurant(
     4,
@@ -37,7 +37,7 @@ export const restaurantsData: Restaurant[] = [
     ['Italiana'],
     4.6,
     'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    '/restaurant2'
+    '/perfil4'
   ),
   new Restaurant(
     5,
@@ -46,7 +46,7 @@ export const restaurantsData: Restaurant[] = [
     ['Italiana'],
     4.6,
     'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    '/restaurant2'
+    '/perfil5'
   ),
   new Restaurant(
     6,
@@ -55,6 +55,6 @@ export const restaurantsData: Restaurant[] = [
     ['Italiana'],
     4.6,
     'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    '/restaurant2'
+    '/perfil6'
   )
 ]

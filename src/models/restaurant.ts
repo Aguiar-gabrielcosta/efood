@@ -5,7 +5,7 @@ class Restaurant {
   tags: string[]
   rating: number
   description: string
-  link: string
+  route: string
 
   constructor(
     id: number,
@@ -14,7 +14,7 @@ class Restaurant {
     tags: string[],
     rating: number,
     description: string,
-    link: string
+    route: string
   ) {
     this.id = id
     this.name = name
@@ -22,7 +22,7 @@ class Restaurant {
     this.tags = tags
     this.rating = rating
     this.description = description
-    this.link = link
+    this.route = route
   }
 }
 
