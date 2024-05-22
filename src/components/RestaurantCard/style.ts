@@ -38,7 +38,7 @@ export const CardDescription = styled.div`
   margin: 16px 0;
 `
 
-export const CardTags = styled.div`
+export const CardTags = styled.ul`
   position: absolute;
   top: 16px;
   right: 16px;

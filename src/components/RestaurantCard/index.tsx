@@ -6,6 +6,8 @@ import {
   CardTags
 } from './style'
 import star from '../../assets/images/star.svg'
+import PerfilLink from '../PerfilLink'
+import Tag from '../Tag'
 
 type Props = {
   name: string
@@ -13,7 +15,7 @@ type Props = {
   rating: number
   description: string
   tags: string[]
-  link: string
+  perfilLink: string
 }
 
 const RestaurantCard = ({
@@ -22,13 +24,13 @@ const RestaurantCard = ({
   rating,
   description,
   tags,
-  link
+  perfilLink
 }: Props) => {
   return (
     <Card>
       <CardTags>
         {tags.map((tag) => (
-          <li key={tag}>{tag}</li>
+          <Tag key={tag}>{tag}</Tag>
         ))}
       </CardTags>
       <img src={image} alt={name} />
@@ -40,7 +42,7 @@ const RestaurantCard = ({
           </span>
         </CardPrimaryInfo>
         <CardDescription>{description}</CardDescription>
-        <a href={link}>Saiba mais</a>
+        <PerfilLink route={perfilLink}>Saiba mais</PerfilLink>
       </CardInfos>
     </Card>
   )

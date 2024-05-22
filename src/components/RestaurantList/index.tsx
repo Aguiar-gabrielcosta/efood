@@ -12,7 +12,7 @@ const RestaurantList = () => {
               image="//placehold.it/472x217"
               description="Teste teste teste teste test"
               rating={4.9}
-              link="/"
+              perfilLink="/"
               tags={['Tag1', 'Tag2']}
             />
           </li>
