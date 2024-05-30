@@ -31,7 +31,12 @@ export const BannerTitle = styled.h2`
   margin-top: 156px;
 `
 
-export const BannerTags = styled.span`
+export const BannerTags = styled.p`
+  display: inline-block;
   font-weight: 100;
   margin-right: 16px;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
 `

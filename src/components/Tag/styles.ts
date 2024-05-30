@@ -7,4 +7,8 @@ export const TagContainer = styled.li`
   padding: 6px 4px;
   font-size: 0.75rem;
   font-weight: bold;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
 `

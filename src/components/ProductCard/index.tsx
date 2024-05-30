@@ -1,3 +1,4 @@
+import { formatText } from '../../utils/formataTexto'
 import Button from '../Button'
 import { Card, CardDescription, CardTitle } from './style'
 
@@ -12,7 +13,7 @@ const ProductCard = ({ name, image, description }: Props) => {
     <Card>
       <img src={image} alt={name} />
       <CardTitle>{name}</CardTitle>
-      <CardDescription>{description}</CardDescription>
+      <CardDescription>{formatText(description)}</CardDescription>
       <Button>Adicionar ao carrinho</Button>
     </Card>
   )

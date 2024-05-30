@@ -2,9 +2,13 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
   position: relative;
+  height: 100%;
 
-  img {
+  > img {
     display: block;
+    width: 472px;
+    height: 217px;
+    object-fit: cover;
   }
 `
 
@@ -36,6 +40,7 @@ export const CardDescription = styled.div`
   font-size: 0.875rem;
   line-height: 22px;
   margin: 16px 0;
+  min-height: 110px;
 `
 
 export const CardTags = styled.ul`

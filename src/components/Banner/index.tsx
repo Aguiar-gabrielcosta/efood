@@ -1,19 +1,28 @@
+import { useEffect, useState } from 'react'
 import { BannerContainer, BannerTags, BannerTitle } from './styles'
+import { useParams } from 'react-router-dom'
+import Restaurant from '../../models/restaurant'
 
-type Props = {
-  bgImage: string
-  tags: string[]
-  name: string
-}
+const Banner = () => {
+  const { id } = useParams()
+  const [restaurant, setRestaurant] = useState<Restaurant>()
 
-const Banner = ({ bgImage, name, tags }: Props) => {
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setRestaurant(res))
+  }, [id])
+
+  if (!restaurant) {
+    return <h3 className="container">Carregando...</h3>
+  }
+
   return (
-    <BannerContainer $bgImage={bgImage}>
+    <BannerContainer $bgImage={restaurant?.capa}>
       <div className="container">
-        {tags.map((tag) => {
-          return <BannerTags key={tag}>{tag}</BannerTags>
-        })}
-        <BannerTitle>{name}</BannerTitle>
+        {restaurant?.destacado && <BannerTags>Destaque da semana</BannerTags>}
+        <BannerTags>{restaurant?.tipo}</BannerTags>
+        <BannerTitle>{restaurant?.titulo}</BannerTitle>
       </div>
     </BannerContainer>
   )
