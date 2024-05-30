@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import RestaurantCard from '../RestaurantCard'
 import { RestaurantSection, Restaurants } from './styles'
 import Restaurant from '../../models/restaurant'
-import { formatText } from '../../utils/formataTexto'
+import { formatText } from '../../utils/formatText'
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([])
