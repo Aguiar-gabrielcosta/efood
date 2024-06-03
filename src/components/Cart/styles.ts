@@ -31,6 +31,7 @@ export const CartContent = styled.aside`
   background-color: ${(props) => props.theme.primaryColor};
   max-width: 360px;
   width: 100%;
+  overflow-y: auto;
 `
 
 export const CartProduct = styled.div`

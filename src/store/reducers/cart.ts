@@ -29,7 +29,7 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload
       )
 
-      state.items = state.items.splice(itemIndex, 1)
+      state.items.splice(itemIndex, 1)
     }
   }
 })

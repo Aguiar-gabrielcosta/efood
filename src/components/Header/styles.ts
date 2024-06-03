@@ -32,11 +32,12 @@ export const NavLink = styled(Link)`
   font-weight: bold;
 `
 
-export const Cart = styled.a`
+export const CartLink = styled.a`
   text-decoration: none;
   color: ${(props) => props.theme.primaryColor};
   font-size: 1.125rem;
   font-weight: bold;
+  cursor: pointer;
 `
 
 export const HeaderTitle = styled.h1`

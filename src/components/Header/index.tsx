@@ -1,6 +1,9 @@
+import { useDispatch, useSelector } from 'react-redux'
 import logo from '../../assets/images/logo.svg'
 import bgVector from '../../assets/images/bg-vector.svg'
-import { Cart, HeaderContainer, HeaderTitle, NavLink } from './styles'
+import { CartLink, HeaderContainer, HeaderTitle, NavLink } from './styles'
+import { RootReducer } from '../../store'
+import { open } from '../../store/reducers/cart'
 
 type Props = {
   showNavLink: boolean
@@ -9,12 +12,23 @@ type Props = {
 }
 
 const Header = ({ showNavLink, showCart, showTitle }: Props) => {
+  const { items } = useSelector((store: RootReducer) => store.cart)
+  const dispatch = useDispatch()
+
+  const openCart = () => {
+    dispatch(open())
+  }
+
   return (
     <HeaderContainer $bgVetor={bgVector}>
       <div className="container">
         {showNavLink && <NavLink to={'/'}>Restaurantes</NavLink>}
         <img src={logo} alt="efood" />
-        {showCart && <Cart href="#">0 produto(s) no carrinho</Cart>}
+        {showCart && (
+          <CartLink onClick={openCart}>
+            {items.length} produto(s) no carrinho
+          </CartLink>
+        )}
       </div>
       {showTitle && (
         <HeaderTitle className=".container">

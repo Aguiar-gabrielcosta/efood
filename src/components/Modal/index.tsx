@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux'
 import Product from '../../models/products'
 import {
   CloseButton,
@@ -8,6 +9,7 @@ import {
 import closeSvg from '../../assets/images/close.svg'
 import Button from '../Button'
 import { formatPrice } from '../../utils/formatPrice'
+import { add, open } from '../../store/reducers/cart'
 
 type Props = {
   product: Product
@@ -16,12 +18,20 @@ type Props = {
 }
 
 const Modal = ({ product, show, action }: Props) => {
+  const dispatch = useDispatch()
+
   const formatServings = (servings: string) => {
     if (servings === '1 pessoa') {
       return servings
     }
 
     return `de ${servings}`
+  }
+
+  const addToCart = () => {
+    dispatch(add(product))
+    action()
+    dispatch(open())
   }
 
   return (
@@ -36,7 +46,7 @@ const Modal = ({ product, show, action }: Props) => {
             <h2>{product.nome}</h2>
             <p>{product.descricao}</p>
             <p>{`Serve: ${formatServings(product.porcao)}`}</p>
-            <Button>
+            <Button onClick={addToCart}>
               {`Adicionar ao carrinho - ${formatPrice(product.preco)}`}
             </Button>
           </div>
