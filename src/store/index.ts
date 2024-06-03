@@ -4,7 +4,7 @@ import restaurantApi from '../services/restaurantApi'
 
 export type RootReducer = ReturnType<typeof store.getState>
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     cart: cartReducer,
     [restaurantApi.reducerPath]: restaurantApi.reducer

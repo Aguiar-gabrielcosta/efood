@@ -1,17 +1,11 @@
-import { useEffect, useState } from 'react'
 import RestaurantCard from '../RestaurantCard'
 import { RestaurantSection, Restaurants } from './styles'
 import Restaurant from '../../models/restaurant'
 import { formatText } from '../../utils/formatText'
+import { useGetRestaurantListQuery } from '../../services/restaurantApi'
 
 const RestaurantList = () => {
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([])
-
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurants(res))
-  }, [])
+  const { data: restaurants } = useGetRestaurantListQuery()
 
   const getTags = (restaurant: Restaurant) => {
     const tags: string[] = []
@@ -25,6 +19,10 @@ const RestaurantList = () => {
     }
 
     return tags
+  }
+
+  if (!restaurants) {
+    return <h3 className="container">Carregando...</h3>
   }
 
   return (
