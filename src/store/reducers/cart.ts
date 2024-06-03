@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import Product from '../../models/products'
 
 type CartState = {
@@ -14,7 +14,24 @@ const initialState: CartState = {
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
-  reducers: {}
+  reducers: {
+    open: (store) => {
+      store.open = true
+    },
+    close: (store) => {
+      store.open = false
+    },
+    add: (state, action: PayloadAction<Product>) => {
+      state.items.push(action.payload)
+    },
+    remove: (state, action: PayloadAction<number>) => {
+      const itemIndex = state.items.findIndex(
+        (item) => item.id === action.payload
+      )
+
+      state.items = state.items.splice(itemIndex, 1)
+    }
+  }
 })
 
 export default cartSlice.reducer
