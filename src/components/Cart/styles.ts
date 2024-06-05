@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
 export const CartContainer = styled.div`
+  display: none;
+
+  &.show {
+    display: block;
+  }
+
   > p.empty-cart {
     color: ${(props) => props.theme.secondaryColor};
     font-size: 1 rem;

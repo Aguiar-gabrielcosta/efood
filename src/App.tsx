@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import { store } from './store'
 import Cart from './components/Cart'
 import SideBar from './components/SideBar'
+import Forms from './components/Forms'
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
         <ThemeProvider theme={defaultTheme}>
           <GlobalStyle />
           <SideBar>
-            <Cart />
+            <>
+              <Cart />
+              <Forms />
+            </>
           </SideBar>
           <Rotas />
           <Footer />

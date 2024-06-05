@@ -1,11 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type SideBarState = {
   open: boolean
+  view: 'cart' | 'delivery' | 'payment' | 'confirm'
 }
 
 const initialState: SideBarState = {
-  open: false
+  open: false,
+  view: 'cart'
 }
 
 const sideBarSlice = createSlice({
@@ -17,6 +19,9 @@ const sideBarSlice = createSlice({
     },
     close: (store) => {
       store.open = false
+    },
+    changeView: (store, action: PayloadAction<SideBarState['view']>) => {
+      store.view = action.payload
     }
   }
 })

@@ -8,6 +8,7 @@ import { remove } from '../../store/reducers/cart'
 
 const Cart = () => {
   const { items } = useSelector((state: RootReducer) => state.cart)
+  const { view } = useSelector((state: RootReducer) => state.sideBar)
   const dispatch = useDispatch()
   const emptyCart = items.length === 0
 
@@ -22,15 +23,13 @@ const Cart = () => {
   }
 
   return (
-    <>
+    <CartContainer className={view === 'cart' ? 'show' : ''}>
       {emptyCart ? (
-        <CartContainer>
-          <p className="empty-cart">
-            O carrinho está vazio, adicione pelo menos um produto para continuar
-          </p>
-        </CartContainer>
+        <p className="empty-cart">
+          O carrinho está vazio, adicione pelo menos um produto para continuar
+        </p>
       ) : (
-        <CartContainer>
+        <>
           {items.map((item) => (
             <CartProduct key={item.id}>
               <img className="productImg" src={item.foto} alt={item.nome} />
@@ -51,9 +50,9 @@ const Cart = () => {
             <p>{formatPrice(totalPrice())}</p>
           </CartValues>
           <Button width="full">Continuar com a entrega</Button>
-        </CartContainer>
+        </>
       )}
-    </>
+    </CartContainer>
   )
 }
 
