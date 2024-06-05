@@ -1,10 +1,12 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '../Button'
 import { Form, FormsContainer, InputField } from './styles'
 import { RootReducer } from '../../store'
+import { changeView, close } from '../../store/reducers/sideBar'
 
 const Forms = () => {
   const { view } = useSelector((store: RootReducer) => store.sideBar)
+  const dispatch = useDispatch()
 
   return (
     <FormsContainer>
@@ -35,10 +37,18 @@ const Forms = () => {
           <input type="text" name="complement" id="complement" />
         </InputField>
         <div className="buttons-container">
-          <Button type="button" width="full">
+          <Button
+            type="button"
+            width="full"
+            onClick={() => dispatch(changeView('payment'))}
+          >
             Continuar com o pagamento
           </Button>
-          <Button type="button" width="full">
+          <Button
+            type="button"
+            width="full"
+            onClick={() => dispatch(changeView('cart'))}
+          >
             Voltar para o carrinho
           </Button>
         </div>
@@ -66,10 +76,18 @@ const Forms = () => {
           <input type="text" name="expiresYear" id="expiresYear" />
         </InputField>
         <div className="buttons-container">
-          <Button type="submit" width="full">
+          <Button
+            type="submit"
+            width="full"
+            onClick={() => dispatch(changeView('confirm'))}
+          >
             Finalizar pagamento
           </Button>
-          <Button type="button" width="full">
+          <Button
+            type="button"
+            width="full"
+            onClick={() => dispatch(changeView('delivery'))}
+          >
             Voltar para a edição de endereço
           </Button>
         </div>
@@ -93,7 +111,14 @@ const Forms = () => {
           gastronômica. Bom apetite!
         </p>
         <div className="buttons-container">
-          <Button type="button" width="full">
+          <Button
+            type="button"
+            width="full"
+            onClick={() => {
+              dispatch(close())
+              dispatch(changeView('cart'))
+            }}
+          >
             Concluir
           </Button>
         </div>

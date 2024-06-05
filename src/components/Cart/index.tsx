@@ -5,6 +5,7 @@ import { CartContainer, CartProduct, CartValues } from './styles'
 import { RootReducer } from '../../store'
 import { formatPrice } from '../../utils/formatPrice'
 import { remove } from '../../store/reducers/cart'
+import { changeView } from '../../store/reducers/sideBar'
 
 const Cart = () => {
   const { items } = useSelector((state: RootReducer) => state.cart)
@@ -49,7 +50,9 @@ const Cart = () => {
             <p>Valor total</p>
             <p>{formatPrice(totalPrice())}</p>
           </CartValues>
-          <Button width="full">Continuar com a entrega</Button>
+          <Button width="full" onClick={() => dispatch(changeView('delivery'))}>
+            Continuar com a entrega
+          </Button>
         </>
       )}
     </CartContainer>
