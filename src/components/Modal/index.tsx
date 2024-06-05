@@ -9,7 +9,8 @@ import {
 import closeSvg from '../../assets/images/close.svg'
 import Button from '../Button'
 import { formatPrice } from '../../utils/formatPrice'
-import { add, open } from '../../store/reducers/cart'
+import { add } from '../../store/reducers/cart'
+import { open } from '../../store/reducers/sideBar'
 
 type Props = {
   product: Product

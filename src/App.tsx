@@ -7,6 +7,7 @@ import defaultTheme from './themes/theme'
 import Footer from './components/Footer'
 import { store } from './store'
 import Cart from './components/Cart'
+import SideBar from './components/SideBar'
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={defaultTheme}>
           <GlobalStyle />
-          <Cart />
+          <SideBar>
+            <Cart />
+          </SideBar>
           <Rotas />
           <Footer />
         </ThemeProvider>

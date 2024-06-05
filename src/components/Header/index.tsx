@@ -3,7 +3,7 @@ import logo from '../../assets/images/logo.svg'
 import bgVector from '../../assets/images/bg-vector.svg'
 import { CartLink, HeaderContainer, HeaderTitle, NavLink } from './styles'
 import { RootReducer } from '../../store'
-import { open } from '../../store/reducers/cart'
+import { open } from '../../store/reducers/sideBar'
 
 type Props = {
   showNavLink: boolean

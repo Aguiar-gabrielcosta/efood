@@ -3,24 +3,16 @@ import Product from '../../models/products'
 
 type CartState = {
   items: Product[]
-  open: boolean
 }
 
 const initialState: CartState = {
-  items: [],
-  open: false
+  items: []
 }
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    open: (store) => {
-      store.open = true
-    },
-    close: (store) => {
-      store.open = false
-    },
     add: (state, action: PayloadAction<Product>) => {
       state.items.push(action.payload)
     },
@@ -35,4 +27,4 @@ const cartSlice = createSlice({
 })
 
 export default cartSlice.reducer
-export const { open, close, add, remove } = cartSlice.actions
+export const { add, remove } = cartSlice.actions
