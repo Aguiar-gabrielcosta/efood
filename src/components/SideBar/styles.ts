@@ -23,3 +23,13 @@ export const SideBarContainer = styled.div`
     display: flex;
   }
 `
+
+export const Content = styled.aside`
+  position: relative;
+  z-index: 1;
+  padding: 16px 8px;
+  background-color: ${(props) => props.theme.primaryColor};
+  max-width: 360px;
+  width: 100%;
+  overflow-y: auto;
+`
