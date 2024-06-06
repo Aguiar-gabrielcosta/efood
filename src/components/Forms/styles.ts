@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-export const FormsContainer = styled.div`
+export const FormsContainer = styled.form`
   color: ${(props) => props.theme.secondaryColor};
 `
 
-export const Form = styled.form`
+export const FormSection = styled.div`
   margin: 16px 0;
   display: none;
   flex-wrap: wrap;
@@ -50,11 +50,17 @@ export const InputField = styled.div<{ $maxWidth?: string }>`
 
   input {
     width: 100%;
-    border: none;
+    border: 2px solid ${(props) => props.theme.secondaryColor};
     background-color: ${(props) => props.theme.secondaryColor};
     color: ${(props) => props.theme.inputColor};
     font-size: 0.875rem;
     font-weight: bold;
     padding: 8px;
+
+    &.error {
+      border: 2px solid red;
+      outline-color: red;
+      background-color: #ec9292;
+    }
   }
 `

@@ -31,8 +31,8 @@ const Cart = () => {
         </p>
       ) : (
         <>
-          {items.map((item) => (
-            <CartProduct key={item.id}>
+          {items.map((item, index) => (
+            <CartProduct key={index}>
               <img className="productImg" src={item.foto} alt={item.nome} />
               <div>
                 <h3>{item.nome}</h3>

@@ -13,4 +13,10 @@ export const ButtonContainer = styled.button`
   &.all-width {
     width: 100%;
   }
+
+  &:disabled {
+    background-color: ${(props) => props.theme.inputColor};
+    color: ${(props) => props.theme.terciaryColor};
+    cursor: not-allowed;
+  }
 `
