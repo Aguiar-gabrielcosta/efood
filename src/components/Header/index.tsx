@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
-import logo from '../../assets/images/logo.svg'
-import bgVector from '../../assets/images/bg-vector.svg'
-import { CartLink, HeaderContainer, HeaderTitle, NavLink } from './styles'
 import { RootReducer } from '../../store'
 import { open } from '../../store/reducers/sideBar'
+import logo from '../../assets/images/logo.svg'
+import bgVector from '../../assets/images/bg-vector.svg'
+import * as S from './styles'
 
 type Props = {
   showNavLink: boolean
@@ -20,22 +20,22 @@ const Header = ({ showNavLink, showCart, showTitle }: Props) => {
   }
 
   return (
-    <HeaderContainer $bgVetor={bgVector}>
+    <S.HeaderContainer $bgVetor={bgVector}>
       <div className="container">
-        {showNavLink && <NavLink to={'/'}>Restaurantes</NavLink>}
+        {showNavLink && <S.NavLink to={'/'}>Restaurantes</S.NavLink>}
         <img src={logo} alt="efood" />
         {showCart && (
-          <CartLink onClick={openCart}>
+          <S.CartLink onClick={openCart}>
             {items.length} produto(s) no carrinho
-          </CartLink>
+          </S.CartLink>
         )}
       </div>
       {showTitle && (
-        <HeaderTitle className=".container">
+        <S.HeaderTitle className=".container">
           Viva experiências gastronômicas no conforto da sua casa
-        </HeaderTitle>
+        </S.HeaderTitle>
       )}
-    </HeaderContainer>
+    </S.HeaderContainer>
   )
 }
 

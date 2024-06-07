@@ -1,4 +1,4 @@
-import { ButtonContainer } from './style'
+import * as S from './styles'
 
 type Props = {
   children: string
@@ -16,14 +16,14 @@ const Button = ({
   disabled
 }: Props) => {
   return (
-    <ButtonContainer
+    <S.ButtonContainer
       className={width === 'full' ? 'all-width' : ''}
       onClick={onClick}
       type={type}
       disabled={disabled}
     >
       {children}
-    </ButtonContainer>
+    </S.ButtonContainer>
   )
 }
 

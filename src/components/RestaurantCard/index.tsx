@@ -1,13 +1,7 @@
-import {
-  Card,
-  CardInfos,
-  CardPrimaryInfo,
-  CardDescription,
-  CardTags
-} from './style'
+import Tag from '../Tag'
 import star from '../../assets/images/star.svg'
 import PerfilLink from '../PerfilLink'
-import Tag from '../Tag'
+import * as S from './styles'
 
 type Props = {
   name: string
@@ -27,24 +21,24 @@ const RestaurantCard = ({
   perfilLink
 }: Props) => {
   return (
-    <Card>
-      <CardTags>
+    <S.Card>
+      <S.CardTags>
         {tags.map((tag) => (
           <Tag key={tag}>{tag}</Tag>
         ))}
-      </CardTags>
+      </S.CardTags>
       <img src={image} alt={name} />
-      <CardInfos>
-        <CardPrimaryInfo>
+      <S.CardInfos>
+        <S.CardPrimaryInfo>
           <h2>{name}</h2>
           <span>
             {rating} <img src={star} alt="estrela(s)" />
           </span>
-        </CardPrimaryInfo>
-        <CardDescription>{description}</CardDescription>
+        </S.CardPrimaryInfo>
+        <S.CardDescription>{description}</S.CardDescription>
         <PerfilLink route={perfilLink}>Saiba mais</PerfilLink>
-      </CardInfos>
-    </Card>
+      </S.CardInfos>
+    </S.Card>
   )
 }
 

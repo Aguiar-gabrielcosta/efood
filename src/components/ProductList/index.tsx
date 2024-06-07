@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ProductCard from '../ProductCard'
-import { ProductSection, Products } from './styles'
 import Modal from '../Modal'
 import { useGetRestaurantQuery } from '../../services/restaurantApi'
+import * as S from './styles'
 
 const ProductList = () => {
   const { id } = useParams()
@@ -30,9 +30,9 @@ const ProductList = () => {
 
   return (
     <>
-      <ProductSection>
+      <S.ProductSection>
         <div className="container">
-          <Products>
+          <S.Products>
             {products.map((product) => {
               return (
                 <li key={product.id}>
@@ -45,9 +45,9 @@ const ProductList = () => {
                 </li>
               )
             })}
-          </Products>
+          </S.Products>
         </div>
-      </ProductSection>
+      </S.ProductSection>
       {modal.product && (
         <Modal
           product={modal.product}

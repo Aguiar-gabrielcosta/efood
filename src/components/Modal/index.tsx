@@ -1,15 +1,10 @@
 import { useDispatch } from 'react-redux'
-import {
-  CloseButton,
-  ModalContainer,
-  ModalContent,
-  ModalProductDetails
-} from './styles'
-import closeSvg from '../../assets/images/close.svg'
 import Button from '../Button'
 import { formatPrice } from '../../utils/formatPrice'
 import { add } from '../../store/reducers/cart'
 import { open } from '../../store/reducers/sideBar'
+import closeSvg from '../../assets/images/close.svg'
+import * as S from './styles'
 
 type Props = {
   product: Product
@@ -35,12 +30,12 @@ const Modal = ({ product, show, action }: Props) => {
   }
 
   return (
-    <ModalContainer className={show ? 'show' : ''}>
-      <ModalContent>
-        <CloseButton onClick={action}>
+    <S.ModalContainer className={show ? 'show' : ''}>
+      <S.ModalContent>
+        <S.CloseButton onClick={action}>
           <img src={closeSvg} alt="Botão fechar" />
-        </CloseButton>
-        <ModalProductDetails>
+        </S.CloseButton>
+        <S.ModalProductDetails>
           <img src={product.foto} alt={`Foto do prato ${product.nome}`} />
           <div>
             <h2>{product.nome}</h2>
@@ -50,10 +45,10 @@ const Modal = ({ product, show, action }: Props) => {
               {`Adicionar ao carrinho - ${formatPrice(product.preco)}`}
             </Button>
           </div>
-        </ModalProductDetails>
-      </ModalContent>
+        </S.ModalProductDetails>
+      </S.ModalContent>
       <div className="overlay" onClick={action}></div>
-    </ModalContainer>
+    </S.ModalContainer>
   )
 }
 

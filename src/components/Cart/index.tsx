@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../Button'
-import removeImg from '../../assets/images/remove.svg'
-import { CartContainer, CartProduct, CartValues } from './styles'
 import { RootReducer } from '../../store'
-import { formatPrice } from '../../utils/formatPrice'
 import { remove } from '../../store/reducers/cart'
 import { changeView } from '../../store/reducers/sideBar'
+import { formatPrice } from '../../utils/formatPrice'
 import { totalPrice } from '../../utils/totalPrice'
+import removeImg from '../../assets/images/remove.svg'
+import * as S from './styles'
 
 const Cart = () => {
   const { items } = useSelector((state: RootReducer) => state.cart)
@@ -19,7 +19,7 @@ const Cart = () => {
   }
 
   return (
-    <CartContainer className={view === 'cart' ? 'show' : ''}>
+    <S.CartContainer className={view === 'cart' ? 'show' : ''}>
       {emptyCart ? (
         <p className="empty-cart">
           O carrinho está vazio, adicione pelo menos um produto para continuar
@@ -27,7 +27,7 @@ const Cart = () => {
       ) : (
         <>
           {items.map((item, index) => (
-            <CartProduct key={index}>
+            <S.CartProduct key={index}>
               <img className="productImg" src={item.foto} alt={item.nome} />
               <div>
                 <h3>{item.nome}</h3>
@@ -39,18 +39,18 @@ const Cart = () => {
                 alt="Remover item"
                 onClick={() => removeItem(item.id)}
               />
-            </CartProduct>
+            </S.CartProduct>
           ))}
-          <CartValues>
+          <S.CartValues>
             <p>Valor total</p>
             <p>{formatPrice(totalPrice(items))}</p>
-          </CartValues>
+          </S.CartValues>
           <Button width="full" onClick={() => dispatch(changeView('delivery'))}>
             Continuar com a entrega
           </Button>
         </>
       )}
-    </CartContainer>
+    </S.CartContainer>
   )
 }
 

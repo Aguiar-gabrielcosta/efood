@@ -1,6 +1,6 @@
-import { formatText } from '../../utils/formatText'
 import Button from '../Button'
-import { Card, CardDescription, CardTitle } from './style'
+import { formatText } from '../../utils/formatText'
+import * as S from './styles'
 
 type Props = {
   name: string
@@ -12,14 +12,14 @@ type Props = {
 const ProductCard = ({ name, image, description, action }: Props) => {
   return (
     <>
-      <Card>
+      <S.Card>
         <img src={image} alt={name} />
-        <CardTitle>{name}</CardTitle>
-        <CardDescription>{formatText(description)}</CardDescription>
+        <S.CardTitle>{name}</S.CardTitle>
+        <S.CardDescription>{formatText(description)}</S.CardDescription>
         <Button width="full" onClick={action}>
           Adicionar ao carrinho
         </Button>
-      </Card>
+      </S.Card>
     </>
   )
 }

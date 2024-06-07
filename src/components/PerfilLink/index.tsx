@@ -1,4 +1,4 @@
-import { LinkContainer } from './styles'
+import * as S from './styles'
 
 type Props = {
   children: string
@@ -6,7 +6,7 @@ type Props = {
 }
 
 const PerfilLink = ({ children, route }: Props) => {
-  return <LinkContainer to={route}>{children}</LinkContainer>
+  return <S.LinkContainer to={route}>{children}</S.LinkContainer>
 }
 
 export default PerfilLink

@@ -1,7 +1,7 @@
 import RestaurantCard from '../RestaurantCard'
-import { RestaurantSection, Restaurants } from './styles'
 import { formatText } from '../../utils/formatText'
 import { useGetRestaurantListQuery } from '../../services/restaurantApi'
+import * as S from './styles'
 
 const RestaurantList = () => {
   const { data: restaurants } = useGetRestaurantListQuery()
@@ -25,9 +25,9 @@ const RestaurantList = () => {
   }
 
   return (
-    <RestaurantSection>
+    <S.RestaurantSection>
       <div className="container">
-        <Restaurants>
+        <S.Restaurants>
           {restaurants.map((restaurant) => {
             return (
               <li key={restaurant.id}>
@@ -42,9 +42,9 @@ const RestaurantList = () => {
               </li>
             )
           })}
-        </Restaurants>
+        </S.Restaurants>
       </div>
-    </RestaurantSection>
+    </S.RestaurantSection>
   )
 }
 

@@ -1,17 +1,17 @@
+import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
 import Button from '../Button'
-import { FormSection, FormsContainer, InputField } from './styles'
 import { RootReducer } from '../../store'
 import { changeView, close } from '../../store/reducers/sideBar'
-import { useEffect, useMemo, useState } from 'react'
 import { usePostPurchaseMutation } from '../../services/restaurantApi'
+import { clear } from '../../store/reducers/cart'
 import { totalPrice } from '../../utils/totalPrice'
 import { formatPrice } from '../../utils/formatPrice'
-import { clear } from '../../store/reducers/cart'
-import { useNavigate } from 'react-router-dom'
+import * as S from './styles'
 
 const Forms = () => {
   const [deliveryButtonDisabled, setDeliveryButtonDisabled] = useState(true)
@@ -173,10 +173,10 @@ const Forms = () => {
   }
 
   return (
-    <FormsContainer onSubmit={form.handleSubmit}>
-      <FormSection className={view === 'delivery' ? 'show' : ''}>
+    <S.FormsContainer onSubmit={form.handleSubmit}>
+      <S.FormSection className={view === 'delivery' ? 'show' : ''}>
         <h3>Entrega</h3>
-        <InputField>
+        <S.InputField>
           <label htmlFor="reciever">Quem irá receber</label>
           <input
             type="text"
@@ -187,8 +187,8 @@ const Forms = () => {
             onBlur={form.handleBlur}
             className={checkForErrors('reciever') ? 'error' : ''}
           />
-        </InputField>
-        <InputField>
+        </S.InputField>
+        <S.InputField>
           <label htmlFor="address">Endereço</label>
           <input
             type="text"
@@ -199,8 +199,8 @@ const Forms = () => {
             onBlur={form.handleBlur}
             className={checkForErrors('address') ? 'error' : ''}
           />
-        </InputField>
-        <InputField>
+        </S.InputField>
+        <S.InputField>
           <label htmlFor="city">Cidade</label>
           <input
             type="text"
@@ -211,8 +211,8 @@ const Forms = () => {
             onBlur={form.handleBlur}
             className={checkForErrors('city') ? 'error' : ''}
           />
-        </InputField>
-        <InputField $maxWidth="155px">
+        </S.InputField>
+        <S.InputField $maxWidth="155px">
           <label htmlFor="zipCode">CEP</label>
           <InputMask
             type="text"
@@ -225,8 +225,8 @@ const Forms = () => {
             mask="99999-999"
             maskChar={null}
           />
-        </InputField>
-        <InputField $maxWidth="155px">
+        </S.InputField>
+        <S.InputField $maxWidth="155px">
           <label htmlFor="houseNumber">Número</label>
           <input
             type="text"
@@ -237,8 +237,8 @@ const Forms = () => {
             onBlur={form.handleBlur}
             className={checkForErrors('houseNumber') ? 'error' : ''}
           />
-        </InputField>
-        <InputField>
+        </S.InputField>
+        <S.InputField>
           <label htmlFor="complement">Complemento (opcional)</label>
           <input
             type="text"
@@ -248,7 +248,7 @@ const Forms = () => {
             onChange={form.handleChange}
             onBlur={form.handleBlur}
           />
-        </InputField>
+        </S.InputField>
         <div className="buttons-container">
           <Button
             type="button"
@@ -266,10 +266,10 @@ const Forms = () => {
             Voltar para o carrinho
           </Button>
         </div>
-      </FormSection>
-      <FormSection className={view === 'payment' ? 'show' : ''}>
+      </S.FormSection>
+      <S.FormSection className={view === 'payment' ? 'show' : ''}>
         <h3>Pagamento - Valor a pagar {formatPrice(totalPrice(items))}</h3>
-        <InputField>
+        <S.InputField>
           <label htmlFor="cardOwnerName">Nome no cartão</label>
           <input
             type="text"
@@ -280,8 +280,8 @@ const Forms = () => {
             onBlur={form.handleBlur}
             className={checkForErrors('cardOwnerName') ? 'error' : ''}
           />
-        </InputField>
-        <InputField $maxWidth="228px">
+        </S.InputField>
+        <S.InputField $maxWidth="228px">
           <label htmlFor="cardNumber">Numero no cartão</label>
           <InputMask
             type="text"
@@ -294,8 +294,8 @@ const Forms = () => {
             mask="9999 9999 9999 9999"
             maskChar={null}
           />
-        </InputField>
-        <InputField $maxWidth="87px">
+        </S.InputField>
+        <S.InputField $maxWidth="87px">
           <label htmlFor="cardSecurityCode">CVV</label>
           <InputMask
             type="text"
@@ -308,8 +308,8 @@ const Forms = () => {
             mask="999"
             maskChar={null}
           />
-        </InputField>
-        <InputField $maxWidth="155px">
+        </S.InputField>
+        <S.InputField $maxWidth="155px">
           <label htmlFor="expiresMonth">Mês de vencimento</label>
           <input
             type="number"
@@ -323,8 +323,8 @@ const Forms = () => {
             onBlur={form.handleBlur}
             className={checkForErrors('expiresMonth') ? 'error' : ''}
           />
-        </InputField>
-        <InputField $maxWidth="155px">
+        </S.InputField>
+        <S.InputField $maxWidth="155px">
           <label htmlFor="expiresYear">Ano de vencimento</label>
           <input
             type="number"
@@ -337,7 +337,7 @@ const Forms = () => {
             onBlur={form.handleBlur}
             className={checkForErrors('expiresYear') ? 'error' : ''}
           />
-        </InputField>
+        </S.InputField>
         <div className="buttons-container">
           <Button
             type="submit"
@@ -355,8 +355,8 @@ const Forms = () => {
             Voltar para a edição de endereço
           </Button>
         </div>
-      </FormSection>
-      <FormSection className={view === 'confirm' ? 'show' : ''}>
+      </S.FormSection>
+      <S.FormSection className={view === 'confirm' ? 'show' : ''}>
         <h3>Pedido realizado - {`${data?.orderId}`}</h3>
         <p>
           Estamos felizes em informar que seu pedido já está em processo de
@@ -379,8 +379,8 @@ const Forms = () => {
             Concluir
           </Button>
         </div>
-      </FormSection>
-    </FormsContainer>
+      </S.FormSection>
+    </S.FormsContainer>
   )
 }
 

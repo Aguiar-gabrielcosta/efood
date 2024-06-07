@@ -1,6 +1,6 @@
-import { BannerContainer, BannerTags, BannerTitle } from './styles'
 import { useParams } from 'react-router-dom'
 import { useGetRestaurantQuery } from '../../services/restaurantApi'
+import * as S from './styles'
 
 const Banner = () => {
   const { id } = useParams()
@@ -13,13 +13,15 @@ const Banner = () => {
   }
 
   return (
-    <BannerContainer $bgImage={restaurant?.capa}>
+    <S.BannerContainer $bgImage={restaurant?.capa}>
       <div className="container">
-        {restaurant?.destacado && <BannerTags>Destaque da semana</BannerTags>}
-        <BannerTags>{restaurant?.tipo}</BannerTags>
-        <BannerTitle>{restaurant?.titulo}</BannerTitle>
+        {restaurant?.destacado && (
+          <S.BannerTags>Destaque da semana</S.BannerTags>
+        )}
+        <S.BannerTags>{restaurant?.tipo}</S.BannerTags>
+        <S.BannerTitle>{restaurant?.titulo}</S.BannerTitle>
       </div>
-    </BannerContainer>
+    </S.BannerContainer>
   )
 }
 
