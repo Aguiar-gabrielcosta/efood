@@ -2,6 +2,7 @@ import RestaurantCard from '../RestaurantCard'
 import { formatText } from '../../utils/formatText'
 import { useGetRestaurantListQuery } from '../../services/restaurantApi'
 import * as S from './styles'
+import Loader from '../Loader'
 
 const RestaurantList = () => {
   const { data: restaurants } = useGetRestaurantListQuery()
@@ -21,7 +22,7 @@ const RestaurantList = () => {
   }
 
   if (!restaurants) {
-    return <h3 className="container">Carregando...</h3>
+    return <Loader />
   }
 
   return (

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ProductCard from '../ProductCard'
+import Loader from '../Loader'
 import Modal from '../Modal'
 import { useGetRestaurantQuery } from '../../services/restaurantApi'
 import * as S from './styles'
@@ -16,7 +17,7 @@ const ProductList = () => {
   const products = restaurant?.cardapio
 
   if (!products) {
-    return <h3 className="container">Carregando...</h3>
+    return <Loader />
   }
 
   const openModal = (product: Product) => {

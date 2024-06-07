@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import Loader from '../Loader'
 import { useGetRestaurantQuery } from '../../services/restaurantApi'
 import * as S from './styles'
 
@@ -7,7 +8,7 @@ const Banner = () => {
   const { data: restaurant } = useGetRestaurantQuery(id)
 
   if (!restaurant) {
-    return <h3 className="container">Carregando...</h3>
+    return <Loader />
   }
 
   return (
