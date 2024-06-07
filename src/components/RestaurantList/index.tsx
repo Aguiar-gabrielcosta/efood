@@ -1,6 +1,5 @@
 import RestaurantCard from '../RestaurantCard'
 import { RestaurantSection, Restaurants } from './styles'
-import Restaurant from '../../models/restaurant'
 import { formatText } from '../../utils/formatText'
 import { useGetRestaurantListQuery } from '../../services/restaurantApi'
 

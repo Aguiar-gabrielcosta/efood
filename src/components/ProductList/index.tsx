@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ProductCard from '../ProductCard'
 import { ProductSection, Products } from './styles'
-import Product from '../../models/products'
 import Modal from '../Modal'
 import { useGetRestaurantQuery } from '../../services/restaurantApi'
 

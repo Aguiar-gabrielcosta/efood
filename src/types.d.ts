@@ -1,4 +1,24 @@
-export type CartProducts = {
+type Product = {
+  id: number
+  foto: string
+  preco: number
+  nome: string
+  descricao: string
+  porcao: string
+}
+
+type Restaurant = {
+  id: number
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: number
+  descricao: string
+  capa: string
+  cardapio: Product[]
+}
+
+type CartProducts = {
   id: number
   price: number
 }
@@ -27,5 +47,3 @@ type Purchase = {
     }
   }
 }
-
-export default Purchase

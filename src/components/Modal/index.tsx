@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux'
-import Product from '../../models/products'
 import {
   CloseButton,
   ModalContainer,
