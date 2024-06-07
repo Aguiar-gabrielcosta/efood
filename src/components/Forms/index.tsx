@@ -168,7 +168,7 @@ const Forms = () => {
     dispatch(close())
     dispatch(changeView('cart'))
     dispatch(clear())
-    form.handleReset
+    form.resetForm()
     navigate({ pathname: '/' })
   }
 
