@@ -18,5 +18,9 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
     max-width: 1024px;
     width: 100%;
+
+    @media (max-width: 1023px) {
+      max-width: 80%
+    }
   }
 `

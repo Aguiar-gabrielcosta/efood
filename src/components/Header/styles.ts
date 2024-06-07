@@ -18,10 +18,24 @@ export const HeaderContainer = styled.header<{ $bgVetor: string }>`
     padding: 64px 0;
   }
 
-  img {
+  .container > img {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+  }
+
+  .responsive-none {
+    @media (max-width: 650px) {
+      display: none;
+    }
+  }
+
+  .responsive-display {
+    display: none;
+
+    @media (max-width: 650px) {
+      display: block;
+    }
   }
 `
 
@@ -30,6 +44,10 @@ export const NavLink = styled(Link)`
   color: ${(props) => props.theme.primaryColor};
   font-size: 1.125rem;
   font-weight: bold;
+
+  img {
+    height: 2rem;
+  }
 `
 
 export const CartLink = styled.a`
@@ -38,6 +56,10 @@ export const CartLink = styled.a`
   font-size: 1.125rem;
   font-weight: bold;
   cursor: pointer;
+
+  img {
+    height: 2rem;
+  }
 `
 
 export const HeaderTitle = styled.h1`

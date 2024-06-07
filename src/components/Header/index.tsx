@@ -3,6 +3,8 @@ import { RootReducer } from '../../store'
 import { open } from '../../store/reducers/sideBar'
 import logo from '../../assets/images/logo.svg'
 import bgVector from '../../assets/images/bg-vector.svg'
+import cartIcon from '../../assets/images/cartIcon.svg'
+import homeIcon from '../../assets/images/homeIcon.svg'
 import * as S from './styles'
 
 type Props = {
@@ -24,15 +26,21 @@ const Header = ({ showNavLink, showCart, showTitle }: Props) => {
       <div className="container">
         {showNavLink && (
           <S.NavLink title="Clique e veja a lista de restaurantes" to={'/'}>
-            Restaurantes
+            <img
+              src={homeIcon}
+              alt="Restaurantes"
+              className="responsive-display"
+            />
+            <span className="responsive-none">Restaurantes</span>
           </S.NavLink>
         )}
-        <h1>
-          <img src={logo} alt="eFood" />
-        </h1>
+        <img role="heading" src={logo} alt="eFood" />
         {showCart && (
           <S.CartLink title="Clique e observe o carrinho" onClick={openCart}>
-            {items.length} produto(s) no carrinho
+            <span className="responsive-none">
+              {items.length} produto(s) no carrinho
+            </span>
+            <img src={cartIcon} alt="Carrinho" className="responsive-display" />
           </S.CartLink>
         )}
       </div>

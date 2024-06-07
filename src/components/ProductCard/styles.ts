@@ -7,7 +7,7 @@ export const Card = styled.div`
 
   img {
     display: block;
-    width: 304px;
+    width: 100%;
     height: 167px;
     object-fit: cover;
   }
@@ -23,5 +23,5 @@ export const CardDescription = styled.p`
   font-size: 0.875rem;
   line-height: 22px;
   margin: 8px 0;
-  min-height: 176px;
+  min-height: 200px;
 `

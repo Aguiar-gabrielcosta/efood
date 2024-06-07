@@ -2,11 +2,13 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
   position: relative;
+  max-width: 472px;
+  width: 100%;
   height: 100%;
 
   > img {
     display: block;
-    width: 472px;
+    width: 100%;
     height: 217px;
     object-fit: cover;
   }

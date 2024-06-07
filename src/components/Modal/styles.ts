@@ -32,6 +32,10 @@ export const ModalContent = styled.div`
   max-width: 1024px;
   width: 100%;
   z-index: 1;
+
+  @media (max-width: 1023px) {
+    max-width: 80%;
+  }
 `
 
 export const CloseButton = styled.div`
@@ -45,10 +49,19 @@ export const ModalProductDetails = styled.div`
   display: flex;
   gap: 24px;
 
+  @media (max-width: 1023px) {
+    flex-direction: column;
+  }
+
   > img {
     width: 280px;
     height: 280px;
     object-fit: cover;
+
+    @media (max-width: 1023px) {
+      width: 100%;
+      max-height: 200px;
+    }
   }
 
   h2 {
