@@ -27,7 +27,9 @@ const Header = ({ showNavLink, showCart, showTitle }: Props) => {
             Restaurantes
           </S.NavLink>
         )}
-        <img src={logo} alt="efood" />
+        <h1>
+          <img src={logo} alt="eFood" />
+        </h1>
         {showCart && (
           <S.CartLink title="Clique e observe o carrinho" onClick={openCart}>
             {items.length} produto(s) no carrinho
