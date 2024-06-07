@@ -15,8 +15,8 @@ export const ButtonContainer = styled.button`
   }
 
   &:disabled {
-    background-color: ${(props) => props.theme.inputColor};
-    color: ${(props) => props.theme.terciaryColor};
+    background-color: ${(props) => props.theme.buttonDisabledColor};
+    color: ${(props) => props.theme.buttonTextDisabledColor};
     cursor: not-allowed;
   }
 `

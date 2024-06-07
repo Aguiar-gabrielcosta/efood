@@ -58,9 +58,9 @@ export const InputField = styled.div<{ $maxWidth?: string }>`
     padding: 8px;
 
     &.error {
-      border: 2px solid red;
-      outline-color: red;
-      background-color: #ec9292;
+      border: 2px solid ${(props) => props.theme.errorColor};
+      outline-color: ${(props) => props.theme.errorColor};
+      background-color: ${(props) => props.theme.errorBgColor};
     }
   }
 `
