@@ -17,7 +17,7 @@ const ProductCard = ({ name, image, description, action }: Props) => {
         <S.CardTitle>{name}</S.CardTitle>
         <S.CardDescription>{formatText(description)}</S.CardDescription>
         <Button
-          title="Clique para adicionar ao carrinho"
+          title={`Clique para adicionar ${name} ao carrinho`}
           width="full"
           onClick={action}
         >

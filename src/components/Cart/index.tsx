@@ -35,6 +35,8 @@ const Cart = () => {
               </div>
               <img
                 className="remove"
+                role="button"
+                title="Remova este item do carrinho"
                 src={removeImg}
                 alt="Remover item"
                 onClick={() => removeItem(item.id)}

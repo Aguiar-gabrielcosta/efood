@@ -33,7 +33,12 @@ const Modal = ({ product, show, action }: Props) => {
     <S.ModalContainer className={show ? 'show' : ''}>
       <S.ModalContent>
         <S.CloseButton onClick={action}>
-          <img src={closeSvg} alt="Botão fechar" />
+          <img
+            role="button"
+            title="Clique aqui para fechar o modal"
+            src={closeSvg}
+            alt="Botão fechar"
+          />
         </S.CloseButton>
         <S.ModalProductDetails>
           <img src={product.foto} alt={`Foto do prato ${product.nome}`} />
@@ -42,7 +47,7 @@ const Modal = ({ product, show, action }: Props) => {
             <p>{product.descricao}</p>
             <p>{`Serve: ${formatServings(product.porcao)}`}</p>
             <Button
-              title="Clique para adicionar ao carrinho"
+              title={`Clique para adicionar ${product.nome} ao carrinho`}
               onClick={addToCart}
             >
               {`Adicionar ao carrinho - ${formatPrice(product.preco)}`}

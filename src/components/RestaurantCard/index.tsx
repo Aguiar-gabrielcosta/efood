@@ -37,7 +37,7 @@ const RestaurantCard = ({
         </S.CardPrimaryInfo>
         <S.CardDescription>{description}</S.CardDescription>
         <PerfilLink
-          title="Saiba mais sobre o restaurante e seus produtos"
+          title={`Saiba mais sobre o restaurante ${name} e seus produtos`}
           route={perfilLink}
         >
           Saiba mais
