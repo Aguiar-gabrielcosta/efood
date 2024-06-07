@@ -6,18 +6,13 @@ import { RootReducer } from '../../store'
 import { formatPrice } from '../../utils/formatPrice'
 import { remove } from '../../store/reducers/cart'
 import { changeView } from '../../store/reducers/sideBar'
+import { totalPrice } from '../../utils/totalPrice'
 
 const Cart = () => {
   const { items } = useSelector((state: RootReducer) => state.cart)
   const { view } = useSelector((state: RootReducer) => state.sideBar)
   const dispatch = useDispatch()
   const emptyCart = items.length === 0
-
-  const totalPrice = () => {
-    return items.reduce((total, item) => {
-      return (total += item.preco)
-    }, 0)
-  }
 
   const removeItem = (id: number) => {
     dispatch(remove(id))
@@ -48,7 +43,7 @@ const Cart = () => {
           ))}
           <CartValues>
             <p>Valor total</p>
-            <p>{formatPrice(totalPrice())}</p>
+            <p>{formatPrice(totalPrice(items))}</p>
           </CartValues>
           <Button width="full" onClick={() => dispatch(changeView('delivery'))}>
             Continuar com a entrega

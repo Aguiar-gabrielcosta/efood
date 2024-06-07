@@ -7,6 +7,11 @@ import { FormSection, FormsContainer, InputField } from './styles'
 import { RootReducer } from '../../store'
 import { changeView, close } from '../../store/reducers/sideBar'
 import { useEffect, useMemo, useState } from 'react'
+import { usePostPurchaseMutation } from '../../services/restaurantApi'
+import { totalPrice } from '../../utils/totalPrice'
+import { formatPrice } from '../../utils/formatPrice'
+import { clear } from '../../store/reducers/cart'
+import { useNavigate } from 'react-router-dom'
 
 const Forms = () => {
   const [deliveryButtonDisabled, setDeliveryButtonDisabled] = useState(true)
@@ -26,7 +31,11 @@ const Forms = () => {
     return map
   }, [])
   const { view } = useSelector((store: RootReducer) => store.sideBar)
+  const { items } = useSelector((store: RootReducer) => store.cart)
+  const [postPurchase, { data, isSuccess, isLoading }] =
+    usePostPurchaseMutation()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const form = useFormik({
     initialValues: {
@@ -77,8 +86,34 @@ const Forms = () => {
         .max(9999, 'O ano de expiração inválido')
         .required('Este campo é obrigatório')
     }),
-    onSubmit: () => {
-      console.log(form.values)
+    onSubmit: (values) => {
+      postPurchase({
+        delivery: {
+          receiver: values.reciever,
+          address: {
+            description: values.address,
+            city: values.city,
+            zipCode: values.zipCode,
+            number: Number(values.houseNumber),
+            complement: values.complement
+          }
+        },
+        payment: {
+          card: {
+            name: values.cardOwnerName,
+            number: values.cardNumber,
+            code: Number(values.cardSecurityCode),
+            expires: {
+              month: Number(values.expiresMonth),
+              year: Number(values.expiresYear)
+            }
+          }
+        },
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.preco
+        }))
+      })
     }
   })
 
@@ -108,11 +143,9 @@ const Forms = () => {
     }
   }, [validFields, form])
 
-  const checkForErrors = (fieldName: string, value: string) => {
+  const checkForErrors = (fieldName: string) => {
     const touched = fieldName in form.touched
     const invalid = fieldName in form.errors
-    const emptyValue = value === ''
-    console.log(value)
 
     const error = touched && invalid
 
@@ -123,6 +156,20 @@ const Forms = () => {
     }
 
     return error
+  }
+
+  useEffect(() => {
+    if (isSuccess && data) {
+      dispatch(changeView('confirm'))
+    }
+  }, [dispatch, isSuccess, data])
+
+  const finishPurchase = () => {
+    dispatch(close())
+    dispatch(changeView('cart'))
+    dispatch(clear())
+    form.handleReset
+    navigate({ pathname: '/' })
   }
 
   return (
@@ -138,9 +185,7 @@ const Forms = () => {
             value={form.values.reciever}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={
-              checkForErrors('reciever', form.values.reciever) ? 'error' : ''
-            }
+            className={checkForErrors('reciever') ? 'error' : ''}
           />
         </InputField>
         <InputField>
@@ -152,9 +197,7 @@ const Forms = () => {
             value={form.values.address}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={
-              checkForErrors('address', form.values.address) ? 'error' : ''
-            }
+            className={checkForErrors('address') ? 'error' : ''}
           />
         </InputField>
         <InputField>
@@ -166,7 +209,7 @@ const Forms = () => {
             value={form.values.city}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={checkForErrors('city', form.values.city) ? 'error' : ''}
+            className={checkForErrors('city') ? 'error' : ''}
           />
         </InputField>
         <InputField $maxWidth="155px">
@@ -178,9 +221,7 @@ const Forms = () => {
             value={form.values.zipCode}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={
-              checkForErrors('zipCode', form.values.zipCode) ? 'error' : ''
-            }
+            className={checkForErrors('zipCode') ? 'error' : ''}
             mask="99999-999"
             maskChar={null}
           />
@@ -194,11 +235,7 @@ const Forms = () => {
             value={form.values.houseNumber}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={
-              checkForErrors('houseNumber', form.values.houseNumber)
-                ? 'error'
-                : ''
-            }
+            className={checkForErrors('houseNumber') ? 'error' : ''}
           />
         </InputField>
         <InputField>
@@ -231,7 +268,7 @@ const Forms = () => {
         </div>
       </FormSection>
       <FormSection className={view === 'payment' ? 'show' : ''}>
-        <h3>Pagamento - Valor a pagar R$ 190,90</h3>
+        <h3>Pagamento - Valor a pagar {formatPrice(totalPrice(items))}</h3>
         <InputField>
           <label htmlFor="cardOwnerName">Nome no cartão</label>
           <input
@@ -241,11 +278,7 @@ const Forms = () => {
             value={form.values.cardOwnerName}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={
-              checkForErrors('cardOwnerName', form.values.cardOwnerName)
-                ? 'error'
-                : ''
-            }
+            className={checkForErrors('cardOwnerName') ? 'error' : ''}
           />
         </InputField>
         <InputField $maxWidth="228px">
@@ -257,11 +290,7 @@ const Forms = () => {
             value={form.values.cardNumber}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={
-              checkForErrors('cardNumber', form.values.cardNumber)
-                ? 'error'
-                : ''
-            }
+            className={checkForErrors('cardNumber') ? 'error' : ''}
             mask="9999 9999 9999 9999"
             maskChar={null}
           />
@@ -275,11 +304,7 @@ const Forms = () => {
             value={form.values.cardSecurityCode}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={
-              checkForErrors('cardSecurityCode', form.values.cardSecurityCode)
-                ? 'error'
-                : ''
-            }
+            className={checkForErrors('cardSecurityCode') ? 'error' : ''}
             mask="999"
             maskChar={null}
           />
@@ -296,11 +321,7 @@ const Forms = () => {
             value={form.values.expiresMonth}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={
-              checkForErrors('expiresMonth', form.values.expiresMonth)
-                ? 'error'
-                : ''
-            }
+            className={checkForErrors('expiresMonth') ? 'error' : ''}
           />
         </InputField>
         <InputField $maxWidth="155px">
@@ -314,21 +335,17 @@ const Forms = () => {
             value={form.values.expiresYear}
             onChange={form.handleChange}
             onBlur={form.handleBlur}
-            className={
-              checkForErrors('expiresYear', form.values.expiresYear)
-                ? 'error'
-                : ''
-            }
+            className={checkForErrors('expiresYear') ? 'error' : ''}
           />
         </InputField>
         <div className="buttons-container">
           <Button
             type="submit"
             width="full"
-            onClick={() => dispatch(changeView('confirm'))}
-            disabled={paymentButtonDisabled}
+            onClick={form.handleSubmit}
+            disabled={paymentButtonDisabled || isLoading}
           >
-            Finalizar pagamento
+            {isLoading ? 'Realizando pagamento...' : 'Finalizar pagamento'}
           </Button>
           <Button
             type="button"
@@ -340,7 +357,7 @@ const Forms = () => {
         </div>
       </FormSection>
       <FormSection className={view === 'confirm' ? 'show' : ''}>
-        <h3>Pedido realizado - {`{ORDER_ID}`}</h3>
+        <h3>Pedido realizado - {`${data?.orderId}`}</h3>
         <p>
           Estamos felizes em informar que seu pedido já está em processo de
           preparação e, em breve, será entregue no endereço fornecido.
@@ -358,14 +375,7 @@ const Forms = () => {
           gastronômica. Bom apetite!
         </p>
         <div className="buttons-container">
-          <Button
-            type="button"
-            width="full"
-            onClick={() => {
-              dispatch(close())
-              dispatch(changeView('cart'))
-            }}
-          >
+          <Button type="button" width="full" onClick={finishPurchase}>
             Concluir
           </Button>
         </div>

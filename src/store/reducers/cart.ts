@@ -22,9 +22,12 @@ const cartSlice = createSlice({
       )
 
       state.items.splice(itemIndex, 1)
+    },
+    clear: (state) => {
+      state.items = []
     }
   }
 })
 
 export default cartSlice.reducer
-export const { add, remove } = cartSlice.actions
+export const { add, remove, clear } = cartSlice.actions
