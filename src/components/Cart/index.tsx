@@ -45,7 +45,11 @@ const Cart = () => {
             <p>Valor total</p>
             <p>{formatPrice(totalPrice(items))}</p>
           </S.CartValues>
-          <Button width="full" onClick={() => dispatch(changeView('delivery'))}>
+          <Button
+            width="full"
+            title="Clique para inserir as informações da entrega"
+            onClick={() => dispatch(changeView('delivery'))}
+          >
             Continuar com a entrega
           </Button>
         </>

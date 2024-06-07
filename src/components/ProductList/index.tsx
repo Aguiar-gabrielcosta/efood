@@ -6,14 +6,13 @@ import { useGetRestaurantQuery } from '../../services/restaurantApi'
 import * as S from './styles'
 
 const ProductList = () => {
-  const { id } = useParams()
+  const { id } = useParams() as PageParams
   const [modal, setModal] = useState<{
     showModal: boolean
     product: Product | undefined
   }>({ showModal: false, product: undefined })
 
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { data: restaurant } = useGetRestaurantQuery(id!)
+  const { data: restaurant } = useGetRestaurantQuery(id)
   const products = restaurant?.cardapio
 
   if (!products) {

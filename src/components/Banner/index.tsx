@@ -3,10 +3,8 @@ import { useGetRestaurantQuery } from '../../services/restaurantApi'
 import * as S from './styles'
 
 const Banner = () => {
-  const { id } = useParams()
-
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const { data: restaurant } = useGetRestaurantQuery(id!)
+  const { id } = useParams() as PageParams
+  const { data: restaurant } = useGetRestaurantQuery(id)
 
   if (!restaurant) {
     return <h3 className="container">Carregando...</h3>

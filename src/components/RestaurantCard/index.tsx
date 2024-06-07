@@ -36,7 +36,12 @@ const RestaurantCard = ({
           </span>
         </S.CardPrimaryInfo>
         <S.CardDescription>{description}</S.CardDescription>
-        <PerfilLink route={perfilLink}>Saiba mais</PerfilLink>
+        <PerfilLink
+          title="Saiba mais sobre o restaurante e seus produtos"
+          route={perfilLink}
+        >
+          Saiba mais
+        </PerfilLink>
       </S.CardInfos>
     </S.Card>
   )

@@ -41,7 +41,10 @@ const Modal = ({ product, show, action }: Props) => {
             <h2>{product.nome}</h2>
             <p>{product.descricao}</p>
             <p>{`Serve: ${formatServings(product.porcao)}`}</p>
-            <Button onClick={addToCart}>
+            <Button
+              title="Clique para adicionar ao carrinho"
+              onClick={addToCart}
+            >
               {`Adicionar ao carrinho - ${formatPrice(product.preco)}`}
             </Button>
           </div>

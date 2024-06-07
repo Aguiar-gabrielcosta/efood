@@ -6,6 +6,7 @@ type Props = {
   width?: 'full' | 'block'
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
+  title: string
 }
 
 const Button = ({
@@ -13,7 +14,8 @@ const Button = ({
   onClick,
   width = 'block',
   type,
-  disabled
+  disabled,
+  title
 }: Props) => {
   return (
     <S.ButtonContainer
@@ -21,6 +23,7 @@ const Button = ({
       onClick={onClick}
       type={type}
       disabled={disabled}
+      title={title}
     >
       {children}
     </S.ButtonContainer>

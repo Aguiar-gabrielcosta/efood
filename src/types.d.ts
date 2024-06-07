@@ -47,3 +47,7 @@ type Purchase = {
     }
   }
 }
+
+type PageParams = {
+  id: string
+}

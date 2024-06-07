@@ -16,7 +16,11 @@ const ProductCard = ({ name, image, description, action }: Props) => {
         <img src={image} alt={name} />
         <S.CardTitle>{name}</S.CardTitle>
         <S.CardDescription>{formatText(description)}</S.CardDescription>
-        <Button width="full" onClick={action}>
+        <Button
+          title="Clique para adicionar ao carrinho"
+          width="full"
+          onClick={action}
+        >
           Adicionar ao carrinho
         </Button>
       </S.Card>

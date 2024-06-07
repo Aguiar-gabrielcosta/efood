@@ -252,6 +252,7 @@ const Forms = () => {
         <div className="buttons-container">
           <Button
             type="button"
+            title="Clique para continuar com as informações de pagamento"
             width="full"
             onClick={() => dispatch(changeView('payment'))}
             disabled={deliveryButtonDisabled}
@@ -260,6 +261,7 @@ const Forms = () => {
           </Button>
           <Button
             type="button"
+            title="Clique para voltar para ao carrinho"
             width="full"
             onClick={() => dispatch(changeView('cart'))}
           >
@@ -341,6 +343,7 @@ const Forms = () => {
         <div className="buttons-container">
           <Button
             type="submit"
+            title="Clique para finalizar o pagamento"
             width="full"
             onClick={form.handleSubmit}
             disabled={paymentButtonDisabled || isLoading}
@@ -349,6 +352,7 @@ const Forms = () => {
           </Button>
           <Button
             type="button"
+            title="Clique para voltar para a edição de endereço"
             width="full"
             onClick={() => dispatch(changeView('delivery'))}
           >
@@ -375,7 +379,12 @@ const Forms = () => {
           gastronômica. Bom apetite!
         </p>
         <div className="buttons-container">
-          <Button type="button" width="full" onClick={finishPurchase}>
+          <Button
+            type="button"
+            title="Clique para concluir a compra"
+            width="full"
+            onClick={finishPurchase}
+          >
             Concluir
           </Button>
         </div>

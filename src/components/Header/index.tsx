@@ -22,10 +22,14 @@ const Header = ({ showNavLink, showCart, showTitle }: Props) => {
   return (
     <S.HeaderContainer $bgVetor={bgVector}>
       <div className="container">
-        {showNavLink && <S.NavLink to={'/'}>Restaurantes</S.NavLink>}
+        {showNavLink && (
+          <S.NavLink title="Clique e veja a lista de restaurantes" to={'/'}>
+            Restaurantes
+          </S.NavLink>
+        )}
         <img src={logo} alt="efood" />
         {showCart && (
-          <S.CartLink onClick={openCart}>
+          <S.CartLink title="Clique e observe o carrinho" onClick={openCart}>
             {items.length} produto(s) no carrinho
           </S.CartLink>
         )}
