@@ -7,7 +7,9 @@ const Perfil = () => {
     <>
       <Header showCart={true} showNavLink={true} showTitle={false} />
       <Banner />
-      <ProductList />
+      <main>
+        <ProductList />
+      </main>
     </>
   )
 }

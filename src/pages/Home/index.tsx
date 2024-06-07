@@ -5,7 +5,9 @@ const Home = () => {
   return (
     <>
       <Header showCart={false} showNavLink={false} showTitle={true} />
-      <RestaurantList />
+      <main>
+        <RestaurantList />
+      </main>
     </>
   )
 }
