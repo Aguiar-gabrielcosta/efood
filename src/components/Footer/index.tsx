@@ -10,17 +10,26 @@ const Footer = () => {
       <img src={logo} alt="efood" />
       <S.SocialMediaList>
         <li>
-          <S.SocialMediaLinks href="#">
+          <S.SocialMediaLinks
+            title="Clique e acesse o instagram da eFood"
+            href="#"
+          >
             <img src={instaLogo} alt="instagram" />
           </S.SocialMediaLinks>
         </li>
         <li>
-          <S.SocialMediaLinks href="#">
+          <S.SocialMediaLinks
+            title="Clique e acesse o facebook da eFood"
+            href="#"
+          >
             <img src={faceLogo} alt="facebook" />
           </S.SocialMediaLinks>
         </li>
         <li>
-          <S.SocialMediaLinks href="#">
+          <S.SocialMediaLinks
+            title="Clique e acesse o twitter da eFood"
+            href="#"
+          >
             <img src={twitterLogo} alt="twitter" />
           </S.SocialMediaLinks>
         </li>
